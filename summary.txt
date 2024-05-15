@@ -1,0 +1,469 @@
+Nome do arquivo: 01-impressao_sequencia.py
+Conteúdo:
+for i in range(1,11):
+    print(i, end='')
+
+Nome do arquivo: 02-impressao_sequencia_reversa.py
+Conteúdo:
+for i in range (10, 0, -1):
+    print(i)
+
+Nome do arquivo: 03-soma_numeros_for.py
+Conteúdo:
+soma = 0
+for i in range(1, 101):
+    soma += i
+print(i)
+
+Nome do arquivo: 04-impressao_lista.py
+Conteúdo:
+lista = ['pedro', 'jorge', 'amadeu', 'paulo', 'lucas']
+for i in lista:
+    print(i, end= "")
+
+Nome do arquivo: 05-quadrados_numeros.py
+Conteúdo:
+for i in range(1, 21):
+    print(i * i) #i**2
+
+Nome do arquivo: 06-impressao_string.py
+Conteúdo:
+string = "Python"
+for i in string:
+    print(i)
+
+
+
+#for char in "Python":
+#    print(char)
+
+
+Nome do arquivo: 07-soma_pares.py
+Conteúdo:
+soma = 0
+
+for i in range(1, 101):
+    if i % 2 == 0:
+        soma += i
+print(soma)
+
+Nome do arquivo: 08-lista_quadrados.py
+Conteúdo:
+lista = []
+
+for i in range(1, 31):
+    lista.append(i**2)
+
+print(lista)
+
+Nome do arquivo: 09-frequencia_elementos.py
+Conteúdo:
+lista = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4]
+frequencia = {}
+for i in lista:
+    if i in frequencia:
+        frequencia[i] += 1
+    else:
+        frequencia[i] = 1
+print(frequencia)
+
+Nome do arquivo: 10-calculo_fatorial.py
+Conteúdo:
+fatorial = 1
+n = 5
+for i in range(1, n+1):
+    fatorial *= i
+print(fatorial)
+
+Nome do arquivo: 11-impressao_multiplos_tres.py
+Conteúdo:
+for i in range(1,101):
+    if i % 3 == 0:
+        print(i)
+
+Nome do arquivo: 12-concatenar_lista_strings.py
+Conteúdo:
+lista = ['eu ', 'sou ', 'rica']
+resultado = ""
+for i in lista:
+    resultado = resultado + i
+
+print(resultado)
+
+Nome do arquivo: 13-encontrar_maior_numero.py
+Conteúdo:
+numeros = [5, 10, 15, 2, 42, 25]
+maior = 0
+
+for i in numeros:
+    if i > maior:
+        maior = i
+
+print(maior)
+
+Nome do arquivo: 14-intercalar_duas_listas.py
+Conteúdo:
+lista1 = [1, 2, 3]
+lista2 = ['a', 'b', 'c']
+intercalada = []
+for i in range(len(lista1)):
+    intercalada.append(lista1[i])
+    intercalada.append(lista2[i])
+print(intercalada)
+
+
+Nome do arquivo: 15-compreensao_quadrados.py
+Conteúdo:
+quadrados = [i**2 for i in range(1, 31)]
+print(quadrados)
+
+
+Nome do arquivo: 16-modificacoes_lista.py
+Conteúdo:
+#Crie uma lista com cinco números inteiros e faça as seguintes operações: adicionar um número ao final, remover o segundo elemento e imprimir a lista final.
+
+
+lista = []
+
+#Adiciona os elementos de outra lista ao final da lista atual.
+lista.extend(['1item', '2item', '3item', '4item', 'a'])
+
+#Adiciona um elemento ao final da lista.
+lista.append('5item')
+
+# insert(): Insere um elemento em uma posição específica da lista.
+lista.insert(0, '0item')
+
+#Remove a primeira ocorrência de um elemento específico da lista.
+lista.remove("3item")
+
+#Inverte a ordem dos elementos na lista.
+lista.reverse()
+
+#Ordena os elementos da lista.
+lista.sort()
+
+#Remove e retorna o elemento de uma posição específica da lista (ou o último elemento se nenhum índice for especificado).
+elemento_removido = lista.pop(1)
+
+print(elemento_removido)
+print(lista)
+
+#Remove todos os elementos da lista.
+lista.clear()
+
+
+
+Nome do arquivo: 17-verifica_presenca.py
+Conteúdo:
+#Dado uma lista com os valores [5, 7, 9, 3, 2], escreva um código que verifica se o número 9 está presente na lista e imprime uma mensagem confirmando sua presença.
+
+lista = [5, 7, 4, 3, 2]
+if 9 in lista:
+    print("ta na lista")
+
+Nome do arquivo: 18-soma_itens_lista.py
+Conteúdo:
+lista = [10, 20, 30, 40]
+soma = 0
+
+#total = sum(lista)
+
+for i in lista:
+    soma = i + soma
+print(soma)
+
+Nome do arquivo: 19-adicionar_elementos_dicionario.py
+Conteúdo:
+pessoa = {'nome': 'Jao', 'idade': 28, 'cidade': 'Fortaleza'}
+
+pessoa['profissão'] = 'Engenheiro'
+pessoa['profissão'] = 'teste'
+print(pessoa)
+
+Nome do arquivo: 20-impressao_dicionario.py
+Conteúdo:
+pessoa = {'nome': 'Jao', 'idade': 28, 'cidade': 'Fortaleza'}
+
+pessoa['profissão'] = 'Engenheiro'
+pessoa['profissão'] = 'teste'
+
+
+
+for i,e in pessoa.items():
+    print(f"Chave: {i}, Valor: {e}")
+
+Nome do arquivo: 21-controle_fluxo_variavel.py
+Conteúdo:
+variavel = 0
+
+if variavel > 0:
+    print("positivo")
+elif variavel < 0:
+    print("negativo")
+else:
+    print("Zero")
+
+Nome do arquivo: 22-calculo_media_lista.py
+Conteúdo:
+lista = [23, 45, 67, 89]
+
+resultado = sum(lista) / len(lista)
+
+print(resultado)
+
+Nome do arquivo: 23-verifica_primo.py
+Conteúdo:
+numero = 37
+for i in range(2, numero):
+    if numero % i == 0:
+        print(numero, "não é um número primo")
+        break
+else:
+    print(numero, "é um número primo")
+
+
+Nome do arquivo: 24-contador_while.py
+Conteúdo:
+numero = 0
+while numero < 11:
+    print (numero)
+    numero += 1
+
+Nome do arquivo: 25-tratamento_excecao.py
+Conteúdo:
+try:
+    num = int('dez')
+    print(type(num))
+except ValueError:
+    print("Erro: não é possível converter a string para inteiro.")
+
+
+Nome do arquivo: 26-valor_padrao_dicionario.py
+Conteúdo:
+pessoa = {'nome': 'Jao', 'idade': 28, 'cidade': 'Fortaleza'}
+
+valor = pessoa.get('c', 'valor padrao se a chave não existir no dicionário')
+
+print(valor)
+print(pessoa)
+
+Nome do arquivo: 27-acesso_lista_aninhada.py
+Conteúdo:
+lista = [[11, 12], [23, 24]]
+
+print(lista[0][1])
+
+Nome do arquivo: 28-união_interseccao_sets.py
+Conteúdo:
+set1 = {1, 2, 3}
+set2 = {4, 3, 6}
+
+uniao = set1.union(set2)
+interseccao = set1.intersection(set2)
+
+print("União:", uniao)
+print("Interseção:", interseccao)
+
+
+Nome do arquivo: 29-manipulacao_string.py
+Conteúdo:
+string = "     boA tard2 4migo    "
+string2 = "tarde"
+
+print(string.upper())
+print(string.lower())
+print(string.capitalize())
+print(string.strip())
+print(string.replace("tarde", "NOITE"))
+print(string.swapcase())
+print(string.title())
+print(string.replace(" ", "_"))
+print(string[::-1])
+print(string.find(string2))
+print(string.count(string2))
+print("boa {}".format(string2))
+print(f"boa {string2}")
+print(string2[-1:])
+print(list(string2))
+print(string2 * 5)
+
+print(" ".join(string.split()[::-1]))
+
+palavras = string.split()
+iniciais = [word[0].upper() for word in palavras]
+acronimo = ''.join(iniciais)
+
+print(acronimo)
+
+
+Nome do arquivo: 30-acronimo_string.py
+Conteúdo:
+texto = "Olá, mundo!"
+
+numeros = [4 + ord(letra[:1]) for letra in texto]
+
+print(numeros)
+
+letras = [chr(numeros - 4) for numeros in numeros]
+
+print("".join(letras))
+
+Nome do arquivo: 31-numero_variavel_de_args.py
+Conteúdo:
+def calcular_media(*args):
+    if len(args) == 0:
+        return 0
+    return sum(args) / len(args)
+
+
+print(calcular_media(2, 4, 6)) 
+print(calcular_media(10, 20, 30, 40, 50))  
+print(calcular_media())  
+
+
+Nome do arquivo: 32-funcoes_lambda.py
+Conteúdo:
+variavel = lambda x: x**2
+
+print(variavel(4))
+
+Nome do arquivo: 33-tuplas_basicas.py
+Conteúdo:
+tupla = (10, "texto", [1, 2, 3], {'a': 1, 'b': 2})
+
+
+print("Elementos da tupla:")
+for elemento in tupla:
+    print()
+    print(f'Elemeto: {elemento}')
+    print(type(elemento))
+
+
+try:
+    tupla[0] = 20  
+except TypeError as e:
+    print("Erro ao tentar modificar a tupla:", e)
+
+#Desempacotamento 
+a, b, c, d = tupla
+
+print("a:", a)
+print("b:", b)
+print("c:", c)
+print("d:", d)
+
+
+
+Nome do arquivo: 34-classe.py
+Conteúdo:
+class Pessoa:
+    def __init__(self, nome, idade, endereco):
+        self.nome = nome
+        self.idade = idade
+        self.endereco = endereco
+    
+    def imprimir_informacoes(self):
+        print("Nome:", self.nome)
+        print("Idade:", self.idade)
+        print("Endereço:", self.endereco)
+
+# Exemplo de uso da classe Pessoa
+pessoa1 = Pessoa("João", 30, "Rua A, nº 123")
+pessoa1.imprimir_informacoes()
+
+
+
+Nome do arquivo: 35-classe_metodos_especiais.py
+Conteúdo:
+class Pessoa:
+    def __init__(self, nome, idade, endereco):
+        self.nome = nome
+        self.idade = idade
+        self.endereco = endereco
+
+    def __str__(self):
+        return f"{self.nome} {self.idade} {self.endereco}"
+
+    def __repr__(self):
+        return f'Pessoa("{self.nome}", "{self.idade}", {self.endereco})'
+
+pessoa1 = Pessoa("João", 30, "Rua A, nº 123")
+print(pessoa1)
+print(repr(pessoa1))
+
+Nome do arquivo: 36-classe_heranca.py
+Conteúdo:
+class Pessoa:
+    def __init__(self, nome, idade, endereco):
+        self.nome = nome
+        self.idade = idade
+        self.endereco = endereco
+
+class Profissional(Pessoa):
+    def __init__(self, nome, idade, endereco, profissao, localdetrabalho):
+        super().__init__(nome, idade, endereco)    
+        self.profissao = profissao
+        self.localdetrabalho = localdetrabalho 
+    
+    def __str__(self):
+        return f"{self.nome} {self.idade} {self.endereco} {self.localdetrabalho} {self.profissao}"
+
+    def __repr__(self):
+        return f'Profissional("{self.nome}", "{self.idade}", "{self.endereco}", "{self.profissao}", "{self.localdetrabalho}")'
+
+
+p1 = Profissional("João", 30, "Rua 1", "Engenheiro", "Empresa A")
+print(p1)  
+print(repr(p1))  
+
+
+Nome do arquivo: 37-classe_polimorfismo.py
+Conteúdo:
+class Animal:
+    def falar(self):
+        pass
+
+class Cachorro(Animal):
+    def falar(self):
+        return "Au Au"
+
+class Gato(Animal):
+    def falar(self):
+        return "Miau"
+
+def som_do_animal(animal):
+    print(animal.falar())
+
+som_do_animal(Cachorro())
+som_do_animal(Gato())
+
+
+Nome do arquivo: resumo.py
+Conteúdo:
+import os
+
+def summarize_python_files(directory):
+    # Caminho para o arquivo de resumo que será criado
+    summary_path = os.path.join(directory, 'summary.txt')
+    
+    with open(summary_path, 'w', encoding='utf-8') as summary_file:
+        # Itera por todos os arquivos no diretório
+        for filename in os.listdir(directory):
+            if filename.endswith('.py'):
+                file_path = os.path.join(directory, filename)
+                # Anota o nome do arquivo no arquivo de resumo
+                summary_file.write(f'Nome do arquivo: {filename}\n')
+                
+                # Abre e lê o conteúdo do arquivo Python com a codificação UTF-8
+                with open(file_path, 'r', encoding='utf-8') as file:
+                    content = file.read()
+                    # Anota o conteúdo do arquivo no arquivo de resumo
+                    summary_file.write('Conteúdo:\n')
+                    summary_file.write(content)
+                    summary_file.write('\n\n')  # Espaços entre conteúdos de arquivos diferentes
+
+# Chamada da função especificando o diretório desejado
+summarize_python_files(r'C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python')
+
+
