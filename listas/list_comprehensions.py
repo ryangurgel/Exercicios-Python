@@ -63,3 +63,8 @@ listas = [[1, 2, 3], [4, 5], [6, 7, 8, 9]]
 aplanada = [item for sublista in listas for item in sublista]
 print("Exercício 10:", aplanada)
 
+# Exercício 11
+# Transformar uma lista de strings em uma lista de dicionários com a string e seu comprimento.
+strings = ["apple", "banana"]
+dicionarios = [{"word": s, "length": len(s)} for s in strings]
+print("Exercício 11:", dicionarios)
