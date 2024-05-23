@@ -1,0 +1,973 @@
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\arquivos\criar_csv.py
+Conteúdo:
+import os
+
+# Dados que queremos escrever no arquivo CSV
+dados = [
+    ['Nome', 'Idade', 'Profissão'],
+    ['João', 30, 'Engenheiro'],
+    ['Maria', 25, 'Médica'],
+    ['Carlos', 35, 'Professor']
+]
+
+# Nome do arquivo CSV
+nome_arquivo = 'dados.csv'
+
+# Caminho do diretório onde o script .py está localizado
+diretorio_script = r'C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\arquivos'
+
+# Caminho completo do arquivo
+caminho_arquivo = os.path.join(diretorio_script, nome_arquivo)
+
+# Abre o arquivo para escrita
+with open(caminho_arquivo, 'w', encoding='utf-8') as arquivo:
+    # Itera sobre os dados e escreve cada linha no arquivo
+    for linha in dados:
+        # Junta os elementos da linha em uma string separada por vírgula
+        linha_csv = ','.join(map(str, linha))
+        # Escreve a linha no arquivo
+        arquivo.write(linha_csv + '\n')
+
+print("Arquivo CSV criado com sucesso em:", caminho_arquivo)
+
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\arquivos\escrever_arquivos_csv.py
+Conteúdo:
+idades = [30, 25, 35]
+
+with open(file=r'python\Exercicios Python\arquivos\idades.csv', mode = "w", encoding = 'utf-8') as fp:
+    linha = 'idade\n'
+    fp.write(linha)
+    for idade in idades:
+        linha = str(idade) + '\n'
+        fp.write(linha)
+
+
+#modo "a" append
+with open(file=r'python\Exercicios Python\arquivos\idades.csv', mode = "a", encoding = 'utf-8') as fp:
+    for idade in idades:
+        linha = str(idade + 100) + '\n'
+        fp.write(linha)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\arquivos\ler_arquivos_csv.py
+Conteúdo:
+with open(file=r'python\Exercicios Python\arquivos\dados.csv', mode='r', encoding='utf-8') as arquivo_meu:
+    conteudo = arquivo_meu.read().strip().split(',')
+print(conteudo)
+
+
+##############################
+
+
+conteudo_lista1 = []
+with open(file=r'python\Exercicios Python\arquivos\dados.csv', mode='r', encoding='utf-8') as arquivo_meu:
+    for linhab in arquivo_meu:
+        linhal = linhab.strip().split(',')
+        conteudo_lista1.append(linhal)
+
+print(conteudo_lista1)
+
+##############################
+
+conteudo_lista2 = []
+with open(file=r'python\Exercicios Python\arquivos\dados.csv', mode='r', encoding='utf-8') as arquivo_meu:
+    readline = arquivo_meu.readline()
+    while readline:
+        conteudo_lista2.append(linhal)
+        readline = arquivo_meu.readline()
+
+print(conteudo_lista2)
+
+##############################
+
+conteudo_dicionario = []
+with open(file=r'python\Exercicios Python\arquivos\dados.csv', mode='r', encoding='utf-8') as arquivo_meu:
+    #primeira linha, o python remove da leitura no for
+    readline = arquivo_meu.readline().strip().split(',') #acha o /n
+
+    for linhab in arquivo_meu:
+        linhal = linhab.strip().split(',')
+        conteudo_dicionario.append(dict(zip(readline, linhal)))
+
+
+print(conteudo_dicionario)
+
+
+##############################
+
+idades = []
+with open(file=r'python\Exercicios Python\arquivos\dados.csv', mode = 'r', encoding = 'utf-8') as arquivo:
+    linha = arquivo.readline() # Ler o cabeçalho
+    linha = arquivo.readline() # Ler a primeira linha de dados
+
+    while linha:
+        linha_separada = linha.split(',')
+        idade = linha_separada[1]
+        idades.append(idade)
+        linha = arquivo.readline()
+
+print(idades)
+
+###################
+
+file_path = r'python\Exercicios Python\arquivos\dados.csv'
+line_number = 3  
+
+with open(file_path, mode='r', encoding='utf-8') as arquivo:
+    linhas = arquivo.readlines()  # Ler todas as linhas do arquivo em uma lista
+
+# Acessar a linha específica desejada
+if line_number < len(linhas):
+    linha_especifica = linhas[line_number]
+    linha_separada = linha_especifica.split(',')
+    idade = linha_separada[1]
+    print(f"A idade na linha {line_number} é: {idade}")
+else:
+    print(f"O arquivo tem menos de {line_number + 1} linhas.")
+
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\classes\classe_heranca.py
+Conteúdo:
+class Pessoa:
+    def __init__(self, nome, idade, endereco):
+        self.nome = nome
+        self.idade = idade
+        self.endereco = endereco
+
+class Profissional(Pessoa):
+    def __init__(self, nome, idade, endereco, profissao, localdetrabalho):
+        super().__init__(nome, idade, endereco)    
+        self.profissao = profissao
+        self.localdetrabalho = localdetrabalho 
+    
+    def __str__(self):
+        return f"{self.nome} {self.idade} {self.endereco} {self.localdetrabalho} {self.profissao}"
+
+    def __repr__(self):
+        return f'Profissional("{self.nome}", "{self.idade}", "{self.endereco}", "{self.profissao}", "{self.localdetrabalho}")'
+
+
+p1 = Profissional("João", 30, "Rua 1", "Engenheiro", "Empresa A")
+print(p1)  
+print(repr(p1))  
+
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\classes\classe_metodos_especiais.py
+Conteúdo:
+class Pessoa:
+    def __init__(self, nome, idade, endereco):
+        self.nome = nome
+        self.idade = idade
+        self.endereco = endereco
+
+    def __str__(self):
+        return f"{self.nome} {self.idade} {self.endereco}"
+
+    def __repr__(self):
+        return f'Pessoa("{self.nome}", "{self.idade}", {self.endereco})'
+
+pessoa1 = Pessoa("João", 30, "Rua A, nº 123")
+print(pessoa1)
+print(repr(pessoa1))
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\classes\classe_polimorfismo.py
+Conteúdo:
+class Animal:
+    def falar(self):
+        pass
+
+class Cachorro(Animal):
+    def falar(self):
+        return "Au Au"
+
+class Gato(Animal):
+    def falar(self):
+        return "Miau"
+
+def som_do_animal(animal):
+    print(animal.falar())
+
+som_do_animal(Cachorro())
+som_do_animal(Gato())
+
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\classes\definicao_classe.py
+Conteúdo:
+class Pessoa:
+    def __init__(self, nome, idade, endereco):
+        self.nome = nome
+        self.idade = idade
+        self.endereco = endereco
+    
+    def imprimir_informacoes(self):
+        print("Nome:", self.nome)
+        print("Idade:", self.idade)
+        print("Endereço:", self.endereco)
+
+# Exemplo de uso da classe Pessoa
+pessoa1 = Pessoa("João", 30, "Rua A, nº 123")
+pessoa1.imprimir_informacoes()
+
+
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\dicionarios\adicionar_elementos_dicionario.py
+Conteúdo:
+pessoa = {'nome': 'Jao', 'idade': 28, 'cidade': 'Fortaleza'}
+
+pessoa['profissão'] = 'Engenheiro'
+pessoa['profissão'] = 'teste'
+print(pessoa)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\dicionarios\frequencia_elementos.py
+Conteúdo:
+lista = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4]
+frequencia = {}
+for i in lista:
+    if i in frequencia:
+        frequencia[i] += 1
+    else:
+        frequencia[i] = 1
+print(frequencia)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\dicionarios\impressao_dicionario.py
+Conteúdo:
+pessoa = {'nome': 'Jao', 'idade': 28, 'cidade': 'Fortaleza'}
+
+pessoa['profissão'] = 'Engenheiro'
+pessoa['profissão'] = 'teste'
+
+
+
+for i,e in pessoa.items():
+    print(f"Chave: {i}, Valor: {e}")
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\dicionarios\lista_para_dicionario.py
+Conteúdo:
+# Lista de chaves
+chaves = ['Nome', 'Idade', 'Profissão']
+
+# Lista de valores
+valores = ['João', '30', 'Engenheiro']
+
+# Transforma as listas em um dicionário
+dicionario = dict(zip(chaves, valores))
+
+print(dicionario)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\dicionarios\valor_padrao_dicionario.py
+Conteúdo:
+pessoa = {'nome': 'Jao', 'idade': 28, 'cidade': 'Fortaleza'}
+
+valor = pessoa.get('c', 'valor padrao se a chave não existir no dicionário')
+
+print(valor)
+print(pessoa)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\excecoes\tratamento_excecao.py
+Conteúdo:
+try:
+    numero = int('dez')
+    print(type(numero))
+except ValueError:
+    print("Erro: não é possível converter a string para inteiro.")
+
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\funcoes\lambda_functions.py
+Conteúdo:
+#função anonima do paradigma funcional
+variavel = lambda x: x**2
+
+print(variavel(4))
+
+################
+
+variavel = lambda x: True if x%2 == 0 else False
+
+print(variavel(3))
+
+
+##############
+#funções de alta ordem: funções que recebem funções
+#gerar funções dinamicamente
+
+def divisivel(div:int):
+    return lambda nun: True if nun%div == 0 else False
+
+divisivel3 = divisivel(div = 3)
+divisivel2 = divisivel(div = 2)
+
+print(divisivel3(5))
+print(divisivel2(5))
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\funcoes\map_filter_reduce.py
+Conteúdo:
+#função map aplica uma função em todos os elementos de uma coleção (listas, dicionarios, tuplas...)
+#trabalha em paralelo nao exercutando 1 a 1 e sim varios por vez, dependendo do numero de nucleos do processador
+#python posterga a execução do map até que seja necessario
+
+lista_de_numeros = [1,2,5,20,6]
+
+numeros_ao_quadrado = map(lambda x: x * 3, lista_de_numeros)
+
+#convertendo para lista a função roda
+print(list(numeros_ao_quadrado))
+
+
+
+#############################################################################################################
+
+
+
+#Sem filter
+pares = []
+for i in lista_de_numeros:
+    if i%2 == 0:
+        pares.append(i)
+
+print(pares)
+
+
+#Com filter
+pares = filter(lambda x: x%2 == 0, lista_de_numeros)
+print(list(pares))
+
+
+
+
+
+#################################################################################################################
+#pega uma função e aplica em dois itens em todos os elementos
+
+
+from functools import reduce
+
+maior_numero = reduce(lambda primeiro, segundo : primeiro if primeiro >= segundo else segundo, lista_de_numeros)
+
+print(maior_numero)
+
+
+#programação funcional é mais pro lado de matematica
+#Ao trabalhar com grandes quantidades de dados, usar a função map pode ser mais eficiente do que usar o "for".
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\funcoes\variavel_de_argumentos.py
+Conteúdo:
+#assinatura da função
+def calcular_media(*args: int) -> float:
+    if len(args) == 0:
+        return 0.0
+    return sum(args) / len(args)
+
+
+print(calcular_media(2, 4, 6)) 
+print(calcular_media(10, 20, 30, 40, 50))  
+print(calcular_media())  
+
+
+
+####################
+
+def calcular_media(*variaveis: int) -> float:
+    if len(variaveis) == 0:
+        return 0.0
+    return sum(variaveis) / len(variaveis)
+
+
+print(calcular_media(2, 4, 6)) 
+print(calcular_media(10, 20, 30, 40, 50))  
+print(calcular_media())  
+
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\listas\acesso_lista_aninhada.py
+Conteúdo:
+lista = [[11, 12], [23, 24]]
+
+print(lista[0][1])
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\listas\acronimo_string.py
+Conteúdo:
+texto = "Olá, mundo!"
+
+numeros = [4 + ord(letra[:1]) for letra in texto]
+
+print(numeros)
+
+letras = [chr(numeros - 4) for numeros in numeros]
+
+print("".join(letras))
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\listas\busca_binaria.py
+Conteúdo:
+def busca_binaria(lista, elemento):
+    esquerda, direita = 0, len(lista) - 1
+
+    while esquerda <= direita:
+        meio = (esquerda + direita) // 2
+
+        # Verifica se o elemento está no meio
+        if lista[meio] == elemento:
+            return meio
+        # Se o elemento for maior, ignora a metade esquerda
+        elif lista[meio] < elemento:
+            esquerda = meio + 1
+        # Se o elemento for menor, ignora a metade direita
+        else:
+            direita = meio - 1
+
+    # Se o elemento não estiver presente
+    return -1
+
+# Exemplo de uso
+lista_ordenada = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+elemento_procurado = 7
+
+resultado = busca_binaria(lista_ordenada, elemento_procurado)
+
+if resultado != -1:
+    print(f'Elemento encontrado no índice {resultado}.')
+else:
+    print('Elemento não encontrado na lista.')
+
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\listas\compreensao_quadrados.py
+Conteúdo:
+quadrados = [i**2 for i in range(1, 31)]
+print(quadrados)
+
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\listas\compreensoes_lista.py
+Conteúdo:
+# List Comprehensions - Exercícios Resolvidos
+
+# Exercício 1
+# Criar uma lista de números de 0 a 9.
+numeros = [x for x in range(10)]
+print("Exercício 1:", numeros)
+# Resultado esperado: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# Exercício 2
+# Criar uma lista de quadrados dos números de 0 a 9.
+quadrados = [x**2 for x in range(10)]
+print("Exercício 2:", quadrados)
+# Resultado esperado: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+# Exercício 3
+# Criar uma lista dos números pares de 0 a 20.
+pares = [x for x in range(21) if x % 2 == 0]
+print("Exercício 3:", pares)
+
+
+# Exercício 4
+# Criar uma lista dos comprimentos das palavras em uma lista de palavras.
+palavras = ["python", "list", "comprehension", "exercises"]
+comprimentos = [len(palavra) for palavra in palavras]
+print("Exercício 4:", comprimentos)
+
+
+# Exercício 5
+# Criar uma lista de números de 0 a 9, mas substituindo os números ímpares por -1.
+substituidos = [x if x % 2 == 0 else -1 for x in range(10)]
+print("Exercício 5:", substituidos)
+
+
+# Exercício 6
+# Filtrar uma lista de números, mantendo apenas aqueles que são divisíveis por 3.
+numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+divisiveis_por_3 = [x for x in numeros if x % 3 == 0]
+print("Exercício 6:", divisiveis_por_3)
+
+
+# Exercício 7
+# Criar uma lista de pares (número, quadrado) para números de 0 a 9.
+pares = [(x, x**2) for x in range(10)]
+print("Exercício 7:", pares)
+
+
+# Exercício 8
+# Converter uma lista de strings em uma lista de caracteres.
+palavras = ["hello", "world"]
+caracteres = [char for palavra in palavras for char in palavra]
+print("Exercício 8:", caracteres)
+
+
+# Exercício 9
+# Criar uma lista de listas, onde cada sublista contém números de 0 a 4.
+listas = [[x for x in range(5)] for _ in range(3)]
+print("Exercício 9:", listas)
+
+
+# Exercício 10
+# Aplanar uma lista de listas em uma única lista.
+listas = [[1, 2, 3], [4, 5], [6, 7, 8, 9]]
+aplanada = [item for sublista in listas for item in sublista]
+print("Exercício 10:", aplanada)
+
+# Exercício 11
+# Transformar uma lista de strings em uma lista de dicionários com a string e seu comprimento.
+strings = ["apple", "banana"]
+dicionarios = [{"word": s, "length": len(s)} for s in strings]
+print("Exercício 11:", dicionarios)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\listas\concatenar_strings.py
+Conteúdo:
+lista = ['eu ', 'sou ', 'rica']
+resultado = ""
+for i in lista:
+    resultado = resultado + i
+
+print(resultado)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\listas\impressao_lista.py
+Conteúdo:
+lista = ['pedro', 'jorge', 'amadeu', 'paulo', 'lucas']
+for i in lista:
+    print(i, end= "")
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\listas\intercalar_listas.py
+Conteúdo:
+lista1 = [1, 2, 3]
+lista2 = ['a', 'b', 'c']
+intercalada = []
+for i in range(len(lista1)):
+    intercalada.append(lista1[i])
+    intercalada.append(lista2[i])
+print(intercalada)
+
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\listas\iteracao_multiplas_listas.py
+Conteúdo:
+lista1 = [1, 2, 3, 4]
+lista2 = ['a', 'b', 'c']
+
+for item1, item2 in zip(lista1, lista2):
+    print(item1, item2)
+
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\listas\maior_numero_lista.py
+Conteúdo:
+numeros = [5, 10, 15, 2, 42, 25]
+maior = 0
+
+for i in numeros:
+    if i > maior:
+        maior = i
+
+print(maior)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\listas\media_lista.py
+Conteúdo:
+lista = [23, 45, 67, 89]
+
+resultado = sum(lista) / len(lista)
+
+print(resultado)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\listas\modificar_lista.py
+Conteúdo:
+#Crie uma lista com cinco números inteiros e faça as seguintes operações: adicionar um número ao final, remover o segundo elemento e imprimir a lista final.
+
+
+lista = []
+
+#Adiciona os elementos de outra lista ao final da lista atual.
+lista.extend(['1item', '2item', '3item', '4item', 'a'])
+
+#Adiciona um elemento ao final da lista.
+lista.append('5item')
+
+# insert(): Insere um elemento em uma posição específica da lista.
+lista.insert(0, '0item')
+
+#Remove a primeira ocorrência de um elemento específico da lista.
+lista.remove("3item")
+
+#Inverte a ordem dos elementos na lista.
+lista.reverse()
+
+#Ordena os elementos da lista.
+lista.sort()
+
+#Remove e retorna o elemento de uma posição específica da lista (ou o último elemento se nenhum índice for especificado).
+elemento_removido = lista.pop(1)
+
+print(elemento_removido)
+print(lista)
+
+#Remove todos os elementos da lista.
+lista.clear()
+
+
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\listas\ordenacao_bubble_sort.py
+Conteúdo:
+# Implementação Básica do Bubble Sort
+def bubble_sort(lista):
+    n = len(lista)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if lista[j] > lista[j+1]:
+                lista[j], lista[j+1] = lista[j+1], lista[j]
+
+
+lista = [64, 34, 25, 12, 22, 11, 90]
+bubble_sort(lista)
+print("Lista ordenada:", lista)
+
+
+
+
+# Implementação Otimizada do Bubble Sort
+def bubble_sort_optimized(lista):
+    n = len(lista)
+    for i in range(n):
+        swapped = False
+        for j in range(0, n-i-1):
+            if lista[j] > lista[j+1]:
+                lista[j], lista[j+1] = lista[j+1], lista[j]
+                swapped = True
+        if not swapped:
+            break
+
+
+lista = [64, 34, 25, 12, 22, 11, 90]
+bubble_sort_optimized(lista)
+print("Lista ordenada:", lista)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\listas\quadrados_lista.py
+Conteúdo:
+lista = []
+
+for i in range(1, 31):
+    lista.append(i**2)
+
+print(lista)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\listas\soma_lista.py
+Conteúdo:
+lista = [10, 20, 30, 40]
+soma = 0
+
+#total = sum(lista)
+
+for i in lista:
+    soma = i + soma
+print(soma)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\listas\verificar_presenca.py
+Conteúdo:
+#Dado uma lista com os valores [5, 7, 9, 3, 2], escreva um código que verifica se o número 9 está presente na lista e imprime uma mensagem confirmando sua presença.
+
+lista = [5, 7, 4, 3, 2]
+if 9 in lista:
+    print("ta na lista")
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\listas\matrizes\matriz.py
+Conteúdo:
+#Usando listas aninhadas para fazer uma matriz
+
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+for linha in matriz:
+    print(linha)
+
+print(matriz[0][1])
+
+
+listas = [[i * j for j in range(5)] for i in range(3)]
+for k in listas:
+    print(k)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\loop_for\calculo_fatorial.py
+Conteúdo:
+fatorial = 1
+n = 5
+for i in range(1, n+1):
+    fatorial *= i
+print(fatorial)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\loop_for\controle_fluxo_variavel.py
+Conteúdo:
+variavel = 0
+
+if variavel > 0:
+    print("positivo")
+elif variavel < 0:
+    print("negativo")
+else:
+    print("Zero")
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\loop_for\impressao_multiplos_tres.py
+Conteúdo:
+for i in range(1,101):
+    if i % 3 == 0:
+        print(i)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\loop_for\impressao_sequencia.py
+Conteúdo:
+for i in range(1,11):
+    print(i, end='')
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\loop_for\impressao_string.py
+Conteúdo:
+string = "Python"
+for i in string:
+    print(i)
+
+
+
+#for char in "Python":
+#    print(char)
+
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\loop_for\loops_aninhados.py
+Conteúdo:
+for i in range(1, 11):
+    for j in range(1, 11):
+        print(f"{i} x {j} = {i * j}")
+    print("")
+
+
+for j in range(1,10):
+    linha = "*" * j
+    print(linha)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\loop_for\quadrados_numeros.py
+Conteúdo:
+for i in range(1, 21):
+    print(i * i) #i**2
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\loop_for\sequencia_reversa.py
+Conteúdo:
+for i in range (10, 0, -1):
+    print(i)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\loop_for\soma_numeros.py
+Conteúdo:
+soma = 0
+for i in range(1, 101):
+    soma += i
+print(i)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\loop_for\soma_pares.py
+Conteúdo:
+soma = 0
+
+for i in range(1, 101):
+    if i % 2 == 0:
+        soma += i
+print(soma)
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\loop_for\verificar_primo.py
+Conteúdo:
+numero = 37
+for i in range(2, numero):
+    if numero % i == 0:
+        print(numero, "não é um número primo")
+        break
+else:
+    print(numero, "é um número primo")
+
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\loop_while\contador_while.py
+Conteúdo:
+numero = 0
+while numero < 11:
+    print (numero)
+    numero += 1
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\sets\uniao_interseccao_sets.py
+Conteúdo:
+set1 = {1, 2, 3}
+set2 = {4, 3, 6}
+
+uniao = set1.union(set2)
+interseccao = set1.intersection(set2)
+
+print("União:", uniao)
+print("Interseção:", interseccao)
+
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\strings\manipulacao_string.py
+Conteúdo:
+string = "     boA tard2 4migo    "
+string2 = "tarde"
+
+print("1" + string.upper())
+print("2" + string.lower())
+print("3" + string.capitalize())
+print("4" + string.strip())
+print("5" + string.replace("tarde", "NOITE"))
+print("6" + string.swapcase())
+print("7" + string.title())
+print("8" + string.replace(" ", "_"))
+print("9" + string[::-1])
+print(string.find(string2))
+print(string.count(string2))
+print("12" + "boa {}".format(string2))
+print("13" + f"boa {string2}")
+print("14" + string2[-1:])
+print(list(string2))
+print("16" + string2 * 5)
+
+print("17" + " ".join(string.split()[::-1]))
+
+palavras = string.split()
+iniciais = [word[0].upper() for word in palavras]
+acronimo = ''.join(iniciais)
+
+print("18" + acronimo)
+
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\tuplas\lista_de_pares.py
+Conteúdo:
+lista1 = [1, 2, 3]
+lista2 = ['a', 'b', 'c']
+
+pares = list(zip(lista1, lista2))
+print(pares)
+
+
+
+
+
+
+
+
+
+
+
+pares = [(1, 'a'), (2, 'b'), (3, 'c')]
+
+#operador * é usado para descompactar as tuplas dentro da lista
+lista1, lista2 = zip(*pares)
+print(lista1) 
+print(lista2)  
+
+--------------------------------------------------------------------------------
+
+Nome do arquivo: C:\Users\ryang\OneDrive\Área de Trabalho\Projetos\python\Exercicios Python\tuplas\tuplas_basicas.py
+Conteúdo:
+tupla = (10, "texto", [1, 2, 3], {'a': 1, 'b': 2})
+
+
+print("Elementos da tupla:")
+for elemento in tupla:
+    print()
+    print(f'Elemeto: {elemento}')
+    print(type(elemento))
+
+
+try:
+    tupla[0] = 20  
+except TypeError as e:
+    print("Erro ao tentar modificar a tupla:", e)
+
+#Desempacotamento 
+a, b, c, d = tupla
+
+print("a:", a)
+print("b:", b)
+print("c:", c)
+print("d:", d)
+
+
+
+--------------------------------------------------------------------------------
+
