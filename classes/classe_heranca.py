@@ -6,7 +6,7 @@ class Pessoa:
 
 class Profissional(Pessoa):
     def __init__(self, nome, idade, endereco, profissao, localdetrabalho):
-        super().__init__(nome, idade, endereco)    
+        super().__init__(nome, idade, endereco)    #pega os atributos da classe herdada
         self.profissao = profissao
         self.localdetrabalho = localdetrabalho 
     
